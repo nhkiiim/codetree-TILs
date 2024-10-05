@@ -11,6 +11,7 @@ public class Main {
     public static void main(String[] args) throws Exception{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
+        StringBuilder sb = new StringBuilder();
 
         int Q = Integer.parseInt(st.nextToken());
         trees = new HashMap<>();
@@ -45,7 +46,7 @@ public class Main {
 
             } else if (comm.equals("300")) {
                 int mid = Integer.parseInt(st.nextToken());
-                System.out.println(trees.get(mid).color);
+                sb.append(trees.get(mid).color).append("\n");
 
             } else if (comm.equals("400")) {
                 colorSum = 0;
@@ -59,11 +60,11 @@ public class Main {
                     calcColor(trees.get(root));
                 }
 
-                System.out.println(colorSum);
+                sb.append(colorSum).append("\n");
             }
         }
 
-
+        System.out.println(sb.toString());
 
     }
 
