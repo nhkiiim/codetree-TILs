@@ -3,9 +3,9 @@ import java.io.*;
 
 public class Main {
 
+    static HashSet<Integer> set;
     static HashMap<Integer, Node> trees;
     static boolean depthFlag = true;
-    static int root = 0;
     static int colorSum = 0;
 
     public static void main(String[] args) throws Exception{
@@ -14,6 +14,7 @@ public class Main {
 
         int Q = Integer.parseInt(st.nextToken());
         trees = new HashMap<>();
+        set = new HashSet<>();
 
         for (int i=1; i<=Q; i++) {
             st = new StringTokenizer(br.readLine());
@@ -29,7 +30,7 @@ public class Main {
                 trees.put(mid, node);
 
                 if (pid == -1) {
-                    root = mid;
+                    set.add(mid);
                     continue;
                 }
 
@@ -48,7 +49,11 @@ public class Main {
 
             } else if (comm.equals("400")) {
                 colorSum = 0;
-                calcColor(trees.get(root));
+
+                for (int root : set) {
+                    calcColor(trees.get(root));
+                }
+                
                 System.out.println(colorSum);
             }
         }
