@@ -51,9 +51,14 @@ public class Main {
                 colorSum = 0;
 
                 for (int root : set) {
+                    if (trees.get(root).childrens.size() == 0) {
+                        colorSum += 1;
+                        continue;
+                    }
+
                     calcColor(trees.get(root));
                 }
-                
+
                 System.out.println(colorSum);
             }
         }
