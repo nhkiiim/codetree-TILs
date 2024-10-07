@@ -81,7 +81,7 @@ public class Main {
                     continue;
                 }
 
-                if (yoX < 3) {
+                if (yoX < 4) {
                     for (int k=0; k<R+4; k++) {
                         for (int j=0; j<C+2; j++) {
                             map[k][j] = 0;
