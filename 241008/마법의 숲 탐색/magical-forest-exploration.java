@@ -55,30 +55,40 @@ public class Main {
                     continue;
                 }
 
-                tempYoX = yoX + 1;
+                tempYoX = yoX;
                 tempYoY = yoY - 1;
 
                 okFlag = checkIfOk(tempYoX, tempYoY);
 
                 if (okFlag) {
-                    yoX++;
-                    yoY--;
+                    tempYoX = yoX +1;
+                    okFlag = checkIfOk(tempYoX, tempYoY);
 
-                    golExit = golExitCalc(golExit, -1);
-                    continue;
+                    if (okFlag) {
+                        yoX++;
+                        yoY--;
+
+                        golExit = golExitCalc(golExit, -1);
+                        continue;
+                    }
                 }
 
-                tempYoX = yoX + 1;
+                tempYoX = yoX;
                 tempYoY = yoY + 1;
 
                 okFlag = checkIfOk(tempYoX, tempYoY);
 
                 if (okFlag) {
-                    yoX++;
-                    yoY++;
+                    tempYoX = yoX +1;
+                    okFlag = checkIfOk(tempYoX, tempYoY);
 
-                    golExit = golExitCalc(golExit, 1);
-                    continue;
+                    if (okFlag) {
+                        yoX++;
+                        yoY++;
+
+                        golExit = golExitCalc(golExit, 1);
+                        continue;
+                    }
                 }
 
                 if (yoX < 4) {
@@ -143,7 +153,7 @@ public class Main {
         Queue<int[]> q = new LinkedList<>();
         q.offer(new int[]{x, y, i});
         visited[x][y] = true;
-
+        
         int max = x;
 
         while (!q.isEmpty()) {
@@ -152,7 +162,7 @@ public class Main {
             if (arr[0] > max) {
                 max = arr[0];
             }
-             
+
             for (int k=0; k<4; k++) {
                 int goX = arr[0] + moveX[k];
                 int goY = arr[1] + moveY[k];
